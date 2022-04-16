@@ -28,23 +28,24 @@ export class VpcConstruct extends Construct {
           name: 'Public',
           cidrMask: 24,
           subnetType: ec2.SubnetType.PUBLIC,
+          mapPublicIpOnLaunch: true,
         },
       ],
       enableDnsHostnames: true,
-      enableDnsSupport: true
+      enableDnsSupport: true,
     });
 
-    const publicSubnet = vpc.selectSubnets({
+    const privateSubnet = vpc.selectSubnets({
       subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
     }).subnets;
 
-    const privateSubnet = vpc.selectSubnets({
-      subnetType: ec2.SubnetType.PUBLIC
-    }).subnets
+    const publicSubnets = vpc.selectSubnets({
+      subnetType: ec2.SubnetType.PUBLIC,
+    }).subnets;
 
     // Export resource to be imported to another stack
     this.vpc = vpc;
-    this.publicSubnets = publicSubnet;
+    this.publicSubnets = publicSubnets;
     this.privateSubnets = privateSubnet;
   }
 }
