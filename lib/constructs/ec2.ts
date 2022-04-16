@@ -27,7 +27,7 @@ export class Ec2InstanceConstruct extends Construct {
       machineImage: ec2.MachineImage.latestAmazonLinux(),
       blockDevices: [
         {
-          deviceName: 'dev/sda1',
+          deviceName: '/dev/sda1',
           volume: ec2.BlockDeviceVolume.ebs(8)
         }
       ],
