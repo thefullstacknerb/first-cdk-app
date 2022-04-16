@@ -30,6 +30,8 @@ export class VpcConstruct extends Construct {
           subnetType: ec2.SubnetType.PUBLIC,
         },
       ],
+      enableDnsHostnames: true,
+      enableDnsSupport: true
     });
 
     const publicSubnet = vpc.selectSubnets({
