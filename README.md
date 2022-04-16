@@ -6,6 +6,7 @@ This repository is created to support the below thread
 Visit my blog for more tutorials: https://thefullstacknerb.com/
 
 Infrastructure overview:
+
 ![infrastructure](assets/architecture.png)
 
 ## Bootstrap

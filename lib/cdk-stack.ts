@@ -7,7 +7,7 @@ import { AppStage } from './app-stage';
 
 export class CdkStack extends Stack {
   private repoOwner = 'khuongdo';
-  private repoName = 'thefullstacknerb';
+  private repoName = 'thefullstacknerb_first-cdk-app';
 
   constructor(s: Construct, id: string, props?: StackProps) {
     super(s, id, props);
@@ -15,7 +15,6 @@ export class CdkStack extends Stack {
     const source = pipelines.CodePipelineSource.gitHub(
       `${this.repoOwner}/${this.repoName}`,
       'main',
-      
       {
         // the secret the stores the github token created before
         authentication: SecretValue.secretsManager('github-secret'),
