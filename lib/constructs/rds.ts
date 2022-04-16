@@ -23,7 +23,7 @@ export class RdsConstruct extends Construct {
     const rdsInstance = new rds.DatabaseInstance(this, "RdsInstance", {
       instanceType: ec2.InstanceType.of(
         ec2.InstanceClass.T3,
-        ec2.InstanceSize.NANO
+        ec2.InstanceSize.MICRO
       ),
 
       // Mysql8.0
