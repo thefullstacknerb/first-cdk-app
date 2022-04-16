@@ -4,6 +4,7 @@ import * as cdk from "aws-cdk-lib";
 import * as ec2 from "aws-cdk-lib/aws-ec2";
 import { VpcConstruct } from "./vpc";
 import { SecurityGroupConstruct } from "./security-group";
+import { RemovalPolicy } from "aws-cdk-lib";
 
 interface IRdsConstructProps {
   vpc: VpcConstruct;
@@ -36,7 +37,9 @@ export class RdsConstruct extends Construct {
       allocatedStorage: 8, //8GB
       databaseName: "MyDatabase",
       securityGroups: [rdsSG],
-      
+      // It a good idea that choose RETAIN policy in production
+      removalPolicy: RemovalPolicy.DESTROY,
+      multiAz: false
     });
 
     this.rdsInstance = rdsInstance;
