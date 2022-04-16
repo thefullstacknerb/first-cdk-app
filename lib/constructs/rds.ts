@@ -16,7 +16,7 @@ export class RdsConstruct extends Construct {
     super(s, id);
 
     const {
-      vpc: { vpc, privateSubnet },
+      vpc: { vpc, privateSubnets },
       sg: { rdsSG },
     } = props;
 
@@ -32,7 +32,7 @@ export class RdsConstruct extends Construct {
       }),
       vpc: vpc,
       vpcSubnets: {
-        subnets: [privateSubnet]
+        subnets: privateSubnets
       },
       allocatedStorage: 8, //8GB
       databaseName: "MyDatabase",

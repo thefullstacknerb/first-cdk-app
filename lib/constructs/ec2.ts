@@ -15,7 +15,7 @@ export class Ec2InstanceConstruct extends Construct {
     super(s, id);
 
     const {
-      vpc: { vpc, publicSubnet },
+      vpc: { vpc, publicSubnets },
     } = props;
 
     const ec2Instance = new ec2.Instance(this, "Webserver", {
@@ -33,7 +33,7 @@ export class Ec2InstanceConstruct extends Construct {
       ],
       vpc: vpc,
       vpcSubnets: {
-        subnets: [publicSubnet],
+        subnets: publicSubnets,
       },
     });
 
