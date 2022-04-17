@@ -39,7 +39,7 @@ export class RdsConstruct extends Construct {
       securityGroups: [rdsSG],
       // It a good idea that choose RETAIN policy in production
       removalPolicy: RemovalPolicy.DESTROY,
-      multiAz: false
+      multiAz: false,
     });
 
     this.rdsInstance = rdsInstance;

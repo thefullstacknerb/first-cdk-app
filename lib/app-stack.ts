@@ -28,8 +28,12 @@ export class AppStack extends Stack {
       sg: securityGroup,
     });
 
-    const secret = new RdsSecretConstruct(this, "RdsSecretConstruct", {
-      rds,
-    });
+    
+    /** You can also attach a separate secret to RDS instead
+     * regarding to the default one
+     */
+    // const secret = new RdsSecretConstruct(this, "RdsSecretConstruct", {
+    //   rds,
+    // });
   }
 }

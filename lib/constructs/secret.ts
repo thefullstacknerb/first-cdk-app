@@ -21,13 +21,10 @@ export class RdsSecretConstruct extends Construct {
       // or just leave it blank and CDK will automatically
       // define secret name for you
       secretName: 'TheFullStackNerb-RdsSecret',
+      masterSecret: rds.rdsInstance.secret
     });
 
     const attachment = secret.attach(rds.rdsInstance);
-
-    // rds.rdsInstance.addRotationMultiUser('admin', {
-    //   secret: attachment,
-    // });
 
     // Export resource
     new CfnOutput(this, 'RdsSecretOutput', {

@@ -30,6 +30,14 @@ export class SecurityGroupConstruct extends Construct {
       ec2.Port.tcp(80),
       "Allow HTTP traffic from anywhere"
     );
+
+    // BEWARE: it is for demostration purpose only,
+    // you should not expose SSH port to anyone.
+    webserverSG.addIngressRule(
+      ec2.Peer.anyIpv4(),
+      ec2.Port.tcp(22),
+      "Allow SSH traffic"
+    )
     
     const rdsSG = new ec2.SecurityGroup(this, 'RdsSecurityGroup', {
       securityGroupName: 'RdsSG',
